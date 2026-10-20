@@ -1,0 +1,32 @@
+[Defines]
+  INF_VERSION    = 0x00010005
+  BASE_NAME      = MemDriver
+  FILE_GUID      = A3B10827-5EF4-4C21-8F3A-92D7E6F8B001
+  MODULE_TYPE    = DXE_RUNTIME_DRIVER
+  VERSION_STRING = 1.0
+  ENTRY_POINT    = MemDriverEntry
+
+[Sources]
+  MemDriver.c
+  PhysMem.nasm
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiRuntimeLib
+  BaseMemoryLib
+  BaseLib
+  DebugLib
+
+[Protocols]
+  gEfiLoadedImageProtocolGuid    ## CONSUMES
+
+[Guids]
+  gEfiEventVirtualAddressChangeGuid  ## CONSUMES
+
+[Depex]
+  TRUE
